@@ -27,7 +27,6 @@ public class Plato {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_id")
-
     private Menu menu;
 
 }

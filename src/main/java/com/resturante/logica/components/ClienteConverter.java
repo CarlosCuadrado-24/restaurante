@@ -1,26 +1,51 @@
 package com.resturante.logica.components;
 
-import com.resturante.logica.dto.ClienteDTO;
+import com.resturante.logica.dto.ClienteRegistroDTO;
+import com.resturante.logica.dto.ClienteRespuestaDTO;
 import com.resturante.logica.models.Cliente;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ClienteConverter {
-    public ClienteDTO aDTO(Cliente cliente) {
-        ClienteDTO clienteDTO = new ClienteDTO();
-        clienteDTO.setNombre(cliente.getNombre());
-        clienteDTO.setCedula(cliente.getCedula());
-        clienteDTO.setCorreo(cliente.getCorreo());
-        clienteDTO.setTelefono(cliente.getTelefono());
-        return clienteDTO;
+
+    public static ClienteRegistroDTO aRegistroDTO(Cliente cliente) {
+        ClienteRegistroDTO clienteRegistroDTO = new ClienteRegistroDTO();
+        clienteRegistroDTO.setNombre(cliente.getNombre());
+        clienteRegistroDTO.setCedula(cliente.getCedula());
+        clienteRegistroDTO.setCorreo(cliente.getCorreo());
+        clienteRegistroDTO.setTelefono(cliente.getTelefono());
+        return clienteRegistroDTO;
     }
 
-    public Cliente aEntidad(ClienteDTO clienteDTO) {
+    public static ClienteRespuestaDTO aRespuestaDTO(Cliente cliente) {
+        return new ClienteRespuestaDTO(
+                cliente.getId(),
+                cliente.getNombre(),
+                cliente.getCedula(),
+                cliente.getCorreo(),
+                cliente.getTelefono(),
+                cliente.getTipo(),
+                cliente.getPedidos()
+        );
+    }
+
+    public static Cliente aEntidad(Long id, ClienteRegistroDTO clienteRegistroDTO) {
         Cliente cliente = new Cliente();
-        cliente.setNombre(clienteDTO.getNombre());
-        cliente.setCedula(clienteDTO.getCedula());
-        cliente.setCorreo(clienteDTO.getCorreo());
-        cliente.setTelefono(clienteDTO.getTelefono());
+        cliente.setId(id);
+        cliente.setNombre(clienteRegistroDTO.getNombre());
+        cliente.setCedula(clienteRegistroDTO.getCedula());
+        cliente.setCorreo(clienteRegistroDTO.getCorreo());
+        cliente.setTelefono(clienteRegistroDTO.getTelefono());
         return cliente;
     }
+
+    public static Cliente aEntidad(ClienteRegistroDTO clienteRegistroDTO) {
+        Cliente cliente = new Cliente();
+        cliente.setNombre(clienteRegistroDTO.getNombre());
+        cliente.setCedula(clienteRegistroDTO.getCedula());
+        cliente.setCorreo(clienteRegistroDTO.getCorreo());
+        cliente.setTelefono(clienteRegistroDTO.getTelefono());
+        return cliente;
+    }
+
 }

@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ClienteDTO {
+public class ClienteRegistroDTO {
     private String nombre;
     private String cedula;
     private String correo;

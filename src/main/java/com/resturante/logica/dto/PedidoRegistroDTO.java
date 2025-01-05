@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PedidoDTO {
+public class PedidoRegistroDTO {
     //private LocalDateTime fechaPedido;
     private String estado;
     //private Double precio;

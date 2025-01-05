@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PlatoDTO {
+public class PlatoRegistroDTO {
     private String nombre;
     private String descripcion;
     private Double precio;

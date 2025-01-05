@@ -1,21 +1,21 @@
 package com.resturante.logica.components;
 
-import com.resturante.logica.dto.MenuDTO;
+import com.resturante.logica.dto.MenuRegistroDTO;
 import com.resturante.logica.models.Menu;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MenuConverter {
 
-    public MenuDTO aDTO (Menu menu){
-        MenuDTO menuDTO = new MenuDTO();
-        menuDTO.setNombre(menu.getNombre());
-        return menuDTO;
+    public static MenuRegistroDTO aDTO (Menu menu){
+        MenuRegistroDTO menuRegistroDTO = new MenuRegistroDTO();
+        menuRegistroDTO.setNombre(menu.getNombre());
+        return menuRegistroDTO;
     }
 
-    public Menu aEntidad (MenuDTO menuDTO){
+    public static Menu aEntidad (MenuRegistroDTO menuRegistroDTO){
         Menu menu = new Menu();
-        menu.setNombre(menuDTO.getNombre());
+        menu.setNombre(menuRegistroDTO.getNombre());
         return menu;
     }
 

@@ -1,25 +1,25 @@
 package com.resturante.logica.components;
 
-import com.resturante.logica.dto.PlatoDTO;
+import com.resturante.logica.dto.PlatoRegistroDTO;
 import com.resturante.logica.models.Plato;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PlatoConverter {
 
-    public PlatoDTO aDTO(Plato plato) {
-        PlatoDTO platoDTO = new PlatoDTO();
-        platoDTO.setNombre(plato.getNombre());
-        platoDTO.setDescripcion(plato.getDescripcion());
-        platoDTO.setPrecio(plato.getPrecio());
-        return platoDTO;
+    public static PlatoRegistroDTO aDTO(Plato plato) {
+        PlatoRegistroDTO platoRegistroDTO = new PlatoRegistroDTO();
+        platoRegistroDTO.setNombre(plato.getNombre());
+        platoRegistroDTO.setDescripcion(plato.getDescripcion());
+        platoRegistroDTO.setPrecio(plato.getPrecio());
+        return platoRegistroDTO;
     }
 
-    public Plato aEntidad(PlatoDTO platoDTO) {
+    public static Plato aEntidad(PlatoRegistroDTO platoRegistroDTO) {
         Plato plato = new Plato();
-        plato.setNombre(platoDTO.getNombre());
-        plato.setDescripcion(platoDTO.getDescripcion());
-        plato.setPrecio(platoDTO.getPrecio());
+        plato.setNombre(platoRegistroDTO.getNombre());
+        plato.setDescripcion(platoRegistroDTO.getDescripcion());
+        plato.setPrecio(platoRegistroDTO.getPrecio());
         return plato;
     }
 

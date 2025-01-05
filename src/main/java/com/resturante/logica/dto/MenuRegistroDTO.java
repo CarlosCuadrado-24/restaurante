@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MenuDTO {
+public class MenuRegistroDTO {
 
     private String nombre;
 
