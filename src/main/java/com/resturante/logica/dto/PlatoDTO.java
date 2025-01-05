@@ -1,12 +1,12 @@
 package com.resturante.logica.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class PlatoDTO {
-
     private String nombre;
     private String descripcion;
     private Double precio;
-
 }

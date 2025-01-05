@@ -4,13 +4,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Pedido {
 
     @Id
@@ -21,7 +23,8 @@ public class Pedido {
     private LocalDateTime fechaPedido;
 
     private String estado;
-    private Double precio;
+    //private Double precio;
+
 
 
 

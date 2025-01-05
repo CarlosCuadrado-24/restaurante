@@ -1,14 +1,12 @@
 package com.resturante.logica.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.time.LocalDateTime;
-
-@Data
+@Getter
+@Setter
 public class PedidoDTO {
-
-    private LocalDateTime fechaPedido;
+    //private LocalDateTime fechaPedido;
     private String estado;
-    private Double precio;
-
+    //private Double precio;
 }
