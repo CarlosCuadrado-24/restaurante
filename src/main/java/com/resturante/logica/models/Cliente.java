@@ -26,7 +26,7 @@ public class Cliente {
     private String cedula;
     private String correo;
     private String telefono;
-    private String tipo;
+    private String tipo = "COMUN";
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Pedido> pedidos;
