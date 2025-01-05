@@ -1,9 +1,10 @@
 package com.resturante.logica.repositories;
 
-import com.resturante.logica.models.Cliente;
+
+import com.resturante.logica.models.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ClienteRepository extends JpaRepository<Cliente,Long> {
+public interface MenuRepository extends JpaRepository<Menu,Long> {
 }

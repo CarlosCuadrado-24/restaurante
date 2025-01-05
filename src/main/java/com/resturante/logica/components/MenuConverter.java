@@ -18,6 +18,13 @@ public class MenuConverter {
         return new MenuRespuestaDTO(menu.getId(),menu.getNombre());
     }
 
+    public static Menu aEntidad (Long id,MenuRegistroDTO menuRegistroDTO){
+        Menu menu = new Menu();
+        menu.setId(id);
+        menu.setNombre(menuRegistroDTO.getNombre());
+        return menu;
+    }
+
     public static Menu aEntidad (MenuRegistroDTO menuRegistroDTO){
         Menu menu = new Menu();
         menu.setNombre(menuRegistroDTO.getNombre());

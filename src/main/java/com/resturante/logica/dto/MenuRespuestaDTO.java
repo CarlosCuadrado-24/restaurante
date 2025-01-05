@@ -1,8 +1,12 @@
 package com.resturante.logica.dto;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-@Component
+
+@Getter
+@Setter
 public class MenuRespuestaDTO {
 
     private Long id;
