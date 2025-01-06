@@ -23,7 +23,7 @@ public class Plato {
     private String nombre;
     private String descripcion;
     private Double precio;
-    private String tipo;
+    private String tipo = "COMUN";
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_id")
