@@ -30,7 +30,7 @@ public class Pedido {
     private LocalDateTime fechaPedido;
 
     private String estado = "PENDIENTE";
-    //private Double precio;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
@@ -38,5 +38,7 @@ public class Pedido {
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetallePedido> detalles = new ArrayList<>();
+
+    private Double total = 0.0;
 
 }

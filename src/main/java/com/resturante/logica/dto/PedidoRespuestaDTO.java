@@ -13,9 +13,11 @@ import java.util.List;
 public class PedidoRespuestaDTO {
     private Long IdCliente;
     private List<DetallePedidoRespuestaDTO> detalles;
+    private Double total;
 
     public PedidoRespuestaDTO(Long idCliente, List<DetallePedidoRespuestaDTO> detalles) {
         this.IdCliente = idCliente;
         this.detalles = detalles;
+        total=0.0;
     }
 }

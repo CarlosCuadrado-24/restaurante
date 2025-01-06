@@ -21,13 +21,12 @@ public class PedidoConverter {
 
     private final PlatoService platoService;
     private final ClienteService clienteService;
-    private final PedidoService pedidoService;
+
 
     @Autowired
-    public PedidoConverter(PlatoService platoService, ClienteService clienteService, PedidoService pedidoService) {
+    public PedidoConverter(PlatoService platoService, ClienteService clienteService) {
         this.platoService = platoService;
         this.clienteService = clienteService;
-        this.pedidoService = pedidoService;
     }
 
     public PedidoRespuestaDTO aRespuestaDTO(Pedido pedido) {
@@ -71,12 +70,5 @@ public class PedidoConverter {
         pedido.setId(id);
         return pedido;
     }
-
-//    public Plato aEntidad(Long id, PlatoRegistroDTO platoRegistroDTO) {
-//        Plato plato = aEntidad(platoRegistroDTO);
-//        plato.setId(id);
-//        return plato;
-//    }
-
 
 }
