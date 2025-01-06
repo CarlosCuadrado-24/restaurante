@@ -36,6 +36,7 @@ public class PedidoService {
             pedido.setEstado(pedidoActualizado.getEstado());
             pedido.setCliente(pedidoActualizado.getCliente());
             pedido.setDetalles(pedidoActualizado.getDetalles());
+            pedido.setTotal(pedidoActualizado.getTotal());
             return repositorioPedido.save(pedido);
         }).orElseThrow(() -> new RuntimeException("Pedido con el id " + id + " no pudo ser actualizado"));
     }

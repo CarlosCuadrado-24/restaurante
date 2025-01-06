@@ -36,6 +36,8 @@ public class PedidoController {
     public ResponseEntity<String> agregarPedido(@RequestBody PedidoRegistroDTO pedidoRegistro) {
         Pedido pedido = pedidoConverter.aEntidad(pedidoRegistro);
         pedidoService.agregarPedido(pedido);
+//        //guardar el total
+//        pedidoService.actualizarPedido(pedido.getId(),pedidoConverter.aEntidad(pedido.getId(), pedidoRegistro));
         return ResponseEntity.ok("Pedido agregado exitosamente.");
     }
 

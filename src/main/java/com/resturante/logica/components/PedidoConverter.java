@@ -8,6 +8,7 @@ import com.resturante.logica.models.DetallePedido;
 import com.resturante.logica.models.Pedido;
 import com.resturante.logica.models.Plato;
 import com.resturante.logica.services.ClienteService;
+import com.resturante.logica.services.DetallePedidoService;
 import com.resturante.logica.services.PedidoService;
 import com.resturante.logica.services.PlatoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +22,18 @@ public class PedidoConverter {
 
     private final PlatoService platoService;
     private final ClienteService clienteService;
-
+    private final DetallePedidoService detallePedidoService;
 
     @Autowired
-    public PedidoConverter(PlatoService platoService, ClienteService clienteService) {
+    public PedidoConverter(PlatoService platoService, ClienteService clienteService, DetallePedidoService detallePedidoService) {
         this.platoService = platoService;
         this.clienteService = clienteService;
+        this.detallePedidoService = detallePedidoService;
     }
 
+
     public PedidoRespuestaDTO aRespuestaDTO(Pedido pedido) {
-        return new PedidoRespuestaDTO(pedido.getCliente().getId(),DetalleConverter.aRespuestasDTO(pedido.getDetalles()));
+        return new PedidoRespuestaDTO(pedido.getId(),pedido.getCliente().getId(),DetalleConverter.aRespuestasDTO(pedido.getDetalles()), pedido.getTotal(), pedido.getEstado(),pedido.getFechaPedido());
     }
 
     public Pedido aEntidad(PedidoRegistroDTO pedidoRegistroDTO) {
@@ -47,7 +50,6 @@ public class PedidoConverter {
 
         // Asociar los detalles al pedido
         pedido.setDetalles(detalles);
-
         return pedido;
     }
 
@@ -68,6 +70,7 @@ public class PedidoConverter {
     public Pedido aEntidad(Long id,PedidoRegistroDTO pedidoRegistroDTO) {
         Pedido pedido = aEntidad(pedidoRegistroDTO);
         pedido.setId(id);
+        pedido.setTotal(detallePedidoService.obtenerTotalPorPedidoId(pedido.getId()));
         return pedido;
     }
 
