@@ -2,6 +2,7 @@ package com.resturante.logica.services;
 
 import com.resturante.logica.components.chainOfResponsibility.PedidoChain;
 import com.resturante.logica.components.mediator.PedidoMediator;
+import com.resturante.logica.models.DetallePedido;
 import com.resturante.logica.models.Pedido;
 import com.resturante.logica.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,11 @@ public class PedidoService {
     }
 
     public void agregarPedido(Pedido pedido) {
-        repositorioPedido.save(pedido); //guardado normal
-        pedidoChain.procesar(pedido); //Patron Chain
-        pedidoMediator.calcularTotal(pedido); //patron Mediator
-        repositorioPedido.save(pedido);
+        repositorioPedido.save(pedido); // Guardar el pedido inicial
+        pedidoChain.procesar(pedido); // Procesar el pedido con los handlers
+        repositorioPedido.save(pedido); // Guardar detalles actualizados
+        pedidoMediator.calcularTotal(pedido); // Calcular el total del pedido
+        repositorioPedido.save(pedido); // Guardar el pedido final con el total
     }
 
     public Optional<Pedido> obtenerPedido(Long id) {
@@ -40,14 +42,22 @@ public class PedidoService {
     }
 
     public Pedido actualizarPedido(Long id, Pedido pedidoActualizado) {
-        return repositorioPedido.findById(id).map(pedido -> {
-            pedido.setFechaPedido(pedidoActualizado.getFechaPedido());
-            pedido.setEstado(pedidoActualizado.getEstado());
-            pedido.setCliente(pedidoActualizado.getCliente());
-            pedido.setDetalles(pedidoActualizado.getDetalles());
-            pedido.setTotal(pedidoActualizado.getTotal());
-            pedidoMediator.calcularTotal(pedido);
-            return repositorioPedido.save(pedido);
+
+        return repositorioPedido.findById(id).map(pedidoExistente -> {
+
+            pedidoExistente.setEstado(pedidoActualizado.getEstado());
+            pedidoExistente.setCliente(pedidoActualizado.getCliente());
+
+            pedidoExistente.getDetalles().clear();
+            for (DetallePedido detalle : pedidoActualizado.getDetalles()) {
+                detalle.setPedido(pedidoExistente); // Asegurar la relación bidireccional
+                pedidoExistente.getDetalles().add(detalle);
+            }
+            pedidoExistente = repositorioPedido.save(pedidoExistente);
+            pedidoChain.procesar(pedidoExistente);
+            pedidoMediator.calcularTotal(pedidoExistente);
+            pedidoExistente = repositorioPedido.save(pedidoExistente);
+            return obtenerPedido(pedidoExistente.getId()).orElseThrow(() -> new RuntimeException("Pedido con el id " + id + " no pudo ser encontrado"));
         }).orElseThrow(() -> new RuntimeException("Pedido con el id " + id + " no pudo ser actualizado"));
     }
 

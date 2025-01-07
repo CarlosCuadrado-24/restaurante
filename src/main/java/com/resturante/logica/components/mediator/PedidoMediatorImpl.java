@@ -30,5 +30,4 @@ public class PedidoMediatorImpl implements PedidoMediator{
             return 0.0;
         }
     }
-
 }

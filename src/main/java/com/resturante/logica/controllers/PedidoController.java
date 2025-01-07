@@ -36,8 +36,6 @@ public class PedidoController {
     public ResponseEntity<String> agregarPedido(@RequestBody PedidoRegistroDTO pedidoRegistro) {
         Pedido pedido = pedidoConverter.aEntidad(pedidoRegistro);
         pedidoService.agregarPedido(pedido);
-//        //guardar el total
-//        pedidoService.actualizarPedido(pedido.getId(),pedidoConverter.aEntidad(pedido.getId(), pedidoRegistro));
         return ResponseEntity.ok("Pedido agregado exitosamente.");
     }
 
@@ -61,7 +59,12 @@ public class PedidoController {
         try {
             Pedido pedidoActualizado = pedidoConverter.aEntidad(id, pedidoRegistro);
             pedidoService.actualizarPedido(id, pedidoActualizado);
-            return ResponseEntity.ok(pedidoConverter.aRespuestaDTO(pedidoActualizado));
+
+            // Recargar el pedido final desde la base de datos
+            Pedido pedidoFinal = pedidoService.obtenerPedido(id)
+                    .orElseThrow(() -> new RuntimeException("Pedido no encontrado."));
+
+            return ResponseEntity.ok(pedidoConverter.aRespuestaDTO(pedidoFinal));
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }

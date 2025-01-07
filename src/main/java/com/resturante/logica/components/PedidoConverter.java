@@ -2,14 +2,12 @@ package com.resturante.logica.components;
 
 import com.resturante.logica.dto.PedidoRegistroDTO;
 import com.resturante.logica.dto.PedidoRespuestaDTO;
-import com.resturante.logica.dto.PlatoRegistroDTO;
 import com.resturante.logica.models.Cliente;
 import com.resturante.logica.models.DetallePedido;
 import com.resturante.logica.models.Pedido;
 import com.resturante.logica.models.Plato;
 import com.resturante.logica.services.ClienteService;
 import com.resturante.logica.services.DetallePedidoService;
-import com.resturante.logica.services.PedidoService;
 import com.resturante.logica.services.PlatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -37,18 +35,15 @@ public class PedidoConverter {
     }
 
     public Pedido aEntidad(PedidoRegistroDTO pedidoRegistroDTO) {
-        // Obtener y validar el cliente
+
         Cliente cliente = clienteService.obtenerCliente(pedidoRegistroDTO.getIdCliente())
                 .orElseThrow(() -> new RuntimeException("Cliente no encontrado con ID: " + pedidoRegistroDTO.getIdCliente()));
 
-        // Crear el pedido
         Pedido pedido = new Pedido();
         pedido.setCliente(cliente);
 
-        // Procesar detalles del pedido
         List<DetallePedido> detalles = getDetallePedidos(pedidoRegistroDTO, pedido);
 
-        // Asociar los detalles al pedido
         pedido.setDetalles(detalles);
         return pedido;
     }
@@ -70,6 +65,7 @@ public class PedidoConverter {
     public Pedido aEntidad(Long id,PedidoRegistroDTO pedidoRegistroDTO) {
         Pedido pedido = aEntidad(pedidoRegistroDTO);
         pedido.setId(id);
+//        pedido.setFechaPedido(pedido.getFechaPedido());
         return pedido;
     }
 
