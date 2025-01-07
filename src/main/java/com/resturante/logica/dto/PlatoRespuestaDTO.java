@@ -1,7 +1,6 @@
 package com.resturante.logica.dto;
 
-import com.resturante.logica.models.Menu;
-import jakarta.persistence.Id;
+
 import lombok.Getter;
 import lombok.Setter;
 

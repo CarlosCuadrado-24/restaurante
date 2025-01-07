@@ -8,14 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ClienteConverter {
 
-    public static ClienteRegistroDTO aRegistroDTO(Cliente cliente) {
-        ClienteRegistroDTO clienteRegistroDTO = new ClienteRegistroDTO();
-        clienteRegistroDTO.setNombre(cliente.getNombre());
-        clienteRegistroDTO.setCedula(cliente.getCedula());
-        clienteRegistroDTO.setCorreo(cliente.getCorreo());
-        clienteRegistroDTO.setTelefono(cliente.getTelefono());
-        return clienteRegistroDTO;
-    }
 
     public static ClienteRespuestaDTO aRespuestaDTO(Cliente cliente) {
         return new ClienteRespuestaDTO(

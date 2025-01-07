@@ -20,14 +20,6 @@ public class PlatoConverter {
         this.menuService = menuService;
     }
 
-    public PlatoRegistroDTO aRegistroDTO(Plato plato) {
-        PlatoRegistroDTO platoRegistroDTO = new PlatoRegistroDTO();
-        platoRegistroDTO.setNombre(plato.getNombre());
-        platoRegistroDTO.setDescripcion(plato.getDescripcion());
-        platoRegistroDTO.setPrecio(plato.getPrecio());
-        platoRegistroDTO.setIdMenu(plato.getMenu().getId());
-        return platoRegistroDTO;
-    }
 
     public static List<PlatoRespuestaDTO> aRespuestasDTO(List<Plato> platos) {
         List<PlatoRespuestaDTO> platosRespuestaDTO = new ArrayList<>();

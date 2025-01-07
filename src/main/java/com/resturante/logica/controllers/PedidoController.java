@@ -60,7 +60,6 @@ public class PedidoController {
             Pedido pedidoActualizado = pedidoConverter.aEntidad(id, pedidoRegistro);
             pedidoService.actualizarPedido(id, pedidoActualizado);
 
-            // Recargar el pedido final desde la base de datos
             Pedido pedidoFinal = pedidoService.obtenerPedido(id)
                     .orElseThrow(() -> new RuntimeException("Pedido no encontrado."));
 

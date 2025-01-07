@@ -26,11 +26,11 @@ public class PedidoService {
     }
 
     public void agregarPedido(Pedido pedido) {
-        repositorioPedido.save(pedido); // Guardar el pedido inicial
-        pedidoChain.procesar(pedido); // Procesar el pedido con los handlers
-        repositorioPedido.save(pedido); // Guardar detalles actualizados
-        pedidoMediator.calcularTotal(pedido); // Calcular el total del pedido
-        repositorioPedido.save(pedido); // Guardar el pedido final con el total
+        repositorioPedido.save(pedido);
+        pedidoChain.procesar(pedido);
+        repositorioPedido.save(pedido);
+        pedidoMediator.calcularTotal(pedido);
+        repositorioPedido.save(pedido);
     }
 
     public Optional<Pedido> obtenerPedido(Long id) {
@@ -47,10 +47,9 @@ public class PedidoService {
 
             pedidoExistente.setEstado(pedidoActualizado.getEstado());
             pedidoExistente.setCliente(pedidoActualizado.getCliente());
-
             pedidoExistente.getDetalles().clear();
             for (DetallePedido detalle : pedidoActualizado.getDetalles()) {
-                detalle.setPedido(pedidoExistente); // Asegurar la relación bidireccional
+                detalle.setPedido(pedidoExistente);
                 pedidoExistente.getDetalles().add(detalle);
             }
             pedidoExistente = repositorioPedido.save(pedidoExistente);

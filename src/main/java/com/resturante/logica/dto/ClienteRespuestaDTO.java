@@ -1,9 +1,9 @@
 package com.resturante.logica.dto;
 
-import com.resturante.logica.models.Pedido;
+
 import lombok.Getter;
 import lombok.Setter;
-import java.util.List;
+
 
 @Getter
 @Setter

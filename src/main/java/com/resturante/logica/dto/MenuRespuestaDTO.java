@@ -1,9 +1,9 @@
 package com.resturante.logica.dto;
 
-import com.resturante.logica.models.Plato;
+
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
+
 
 import java.util.List;
 
