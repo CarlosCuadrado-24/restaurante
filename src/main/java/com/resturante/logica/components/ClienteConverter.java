@@ -24,8 +24,7 @@ public class ClienteConverter {
                 cliente.getCedula(),
                 cliente.getCorreo(),
                 cliente.getTelefono(),
-                cliente.getTipo(),
-                cliente.getPedidos()
+                cliente.getTipo()
         );
     }
 

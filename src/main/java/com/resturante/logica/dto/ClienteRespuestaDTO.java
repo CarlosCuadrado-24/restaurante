@@ -15,16 +15,14 @@ public class ClienteRespuestaDTO {
     private String correo;
     private String telefono;
     private String tipo;
-    private List<Pedido> pedidos;
 
-    public ClienteRespuestaDTO(Long id, String nombre, String cedula, String correo, String telefono, String tipo, List<Pedido> pedidos) {
+    public ClienteRespuestaDTO(Long id, String nombre, String cedula, String correo, String telefono, String tipo) {
         this.id = id;
         this.nombre = nombre;
         this.cedula = cedula;
         this.correo = correo;
         this.telefono = telefono;
         this.tipo = tipo;
-        this.pedidos = pedidos;
     }
 
 }

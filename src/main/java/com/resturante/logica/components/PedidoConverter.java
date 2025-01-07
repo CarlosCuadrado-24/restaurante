@@ -70,7 +70,6 @@ public class PedidoConverter {
     public Pedido aEntidad(Long id,PedidoRegistroDTO pedidoRegistroDTO) {
         Pedido pedido = aEntidad(pedidoRegistroDTO);
         pedido.setId(id);
-//        pedido.setTotal(detallePedidoService.obtenerTotalPorPedidoId(pedido.getId()));
         return pedido;
     }
 

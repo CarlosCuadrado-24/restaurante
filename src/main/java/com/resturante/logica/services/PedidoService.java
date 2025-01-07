@@ -1,5 +1,6 @@
 package com.resturante.logica.services;
 
+import com.resturante.logica.components.chainOfResponsibility.PedidoChain;
 import com.resturante.logica.components.mediator.PedidoMediator;
 import com.resturante.logica.models.Pedido;
 import com.resturante.logica.repositories.PedidoRepository;
@@ -14,16 +15,19 @@ public class PedidoService {
 
     private final PedidoRepository repositorioPedido;
     private final PedidoMediator pedidoMediator;
+    private final PedidoChain pedidoChain;
 
     @Autowired
-    public PedidoService(PedidoRepository repositorioPedido, PedidoMediator pedidoMediator) {
+    public PedidoService(PedidoRepository repositorioPedido, PedidoMediator pedidoMediator, PedidoChain pedidoChain) {
         this.repositorioPedido = repositorioPedido;
         this.pedidoMediator = pedidoMediator;
+        this.pedidoChain = pedidoChain;
     }
 
     public void agregarPedido(Pedido pedido) {
-        repositorioPedido.save(pedido);
-        pedidoMediator.calcularTotal(pedido);
+        repositorioPedido.save(pedido); //guardado normal
+        pedidoChain.procesar(pedido); //Patron Chain
+        pedidoMediator.calcularTotal(pedido); //patron Mediator
         repositorioPedido.save(pedido);
     }
 
@@ -50,4 +54,9 @@ public class PedidoService {
     public void eliminarPedido(Long id) {
         repositorioPedido.deleteById(id);
     }
+
+    public Long contarPedidosPorCliente(Long idCliente){
+       return repositorioPedido.contarPedidosPorClienteId(idCliente);
+    }
+
 }

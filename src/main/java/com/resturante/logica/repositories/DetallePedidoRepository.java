@@ -8,6 +8,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DetallePedidoRepository extends JpaRepository<DetallePedido,Long> {
+
     @Query("SELECT SUM(dp.precio) FROM DetallePedido dp WHERE dp.pedido.id = :pedidoId")
     Double obtenerSumaPreciosPorPedidoId(@Param("pedidoId") Long pedidoId);
+
+    @Query("SELECT SUM(dp.cantidad) FROM DetallePedido dp WHERE dp.plato.id = :platoId")
+    Long contarCantPlato(@Param("platoId") Long platoId);
+
 }

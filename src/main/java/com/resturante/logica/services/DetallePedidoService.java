@@ -16,4 +16,8 @@ public class DetallePedidoService {
         return detallePedidoRepository.obtenerSumaPreciosPorPedidoId(pedidoId);
     }
 
+    public Long contarPorPlatoId(Long platoId){
+       return detallePedidoRepository.contarCantPlato(platoId);
+    }
+
 }
