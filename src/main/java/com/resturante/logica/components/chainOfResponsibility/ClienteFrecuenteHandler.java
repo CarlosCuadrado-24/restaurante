@@ -31,7 +31,7 @@ public class ClienteFrecuenteHandler implements PedidoHandler{
                 clienteService.actualizarCliente(cliente.getId(), cliente);
             }
         }else{
-            System.out.println("EEEEEEEEEEERRRRRRRRRRRRRRRRRRRRRRRRROOOOOOOOOOOOOOOOOOOOOOOOORRRRRRR XDDDDDDDDDD");
+            System.out.println("Error pedidoService null");
         }
     }
 }

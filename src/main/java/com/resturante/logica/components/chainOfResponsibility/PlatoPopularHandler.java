@@ -26,6 +26,7 @@ public class PlatoPopularHandler implements PedidoHandler{
             if(TotalpedidosPlato>100){
                 Plato plato = detalle.getPlato();
                 plato.setTipo("POPULAR");
+                plato.setPrecio(plato.getPrecio()*1.0573);
                 platoService.actualizarPlato(plato.getId(),plato);
             }
         }
