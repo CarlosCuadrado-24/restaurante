@@ -49,7 +49,7 @@ public class PlatoController {
     public ResponseEntity<List<PlatoRespuestaDTO>> listarPlatos() {
         List<Plato> platos = platoService.listarPlatos();
         List<PlatoRespuestaDTO> response = platos.stream()
-                .map(platoConverter::aRespuestaDTO)
+                .map(PlatoConverter::aRespuestaDTO)
                 .collect(Collectors.toList());
         return ResponseEntity.ok(response);
     }

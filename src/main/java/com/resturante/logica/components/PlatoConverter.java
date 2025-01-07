@@ -7,6 +7,9 @@ import com.resturante.logica.services.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class PlatoConverter {
 
@@ -26,7 +29,13 @@ public class PlatoConverter {
         return platoRegistroDTO;
     }
 
-    public PlatoRespuestaDTO aRespuestaDTO(Plato plato) {
+    public static List<PlatoRespuestaDTO> aRespuestasDTO(List<Plato> platos) {
+        List<PlatoRespuestaDTO> platosRespuestaDTO = new ArrayList<>();
+        platos.forEach(plato -> platosRespuestaDTO.add(aRespuestaDTO(plato)));
+        return platosRespuestaDTO;
+    }
+
+    public static PlatoRespuestaDTO aRespuestaDTO(Plato plato) {
         return new PlatoRespuestaDTO(plato.getId(),plato.getNombre(), plato.getDescripcion(), plato.getPrecio(), plato.getTipo(), plato.getMenu().getId());
     }
 
