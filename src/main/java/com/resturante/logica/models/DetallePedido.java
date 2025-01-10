@@ -30,4 +30,15 @@ public class DetallePedido {
     @JoinColumn(name = "plato_id")
     private Plato plato;
 
+
+    public DetallePedido() {
+    }
+
+    public DetallePedido(Long id, Integer cantidad, Double precio, Pedido pedido, Plato plato) {
+        this.id = id;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.pedido = pedido;
+        this.plato = plato;
+    }
 }

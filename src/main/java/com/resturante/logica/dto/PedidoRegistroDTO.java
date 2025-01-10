@@ -13,4 +13,9 @@ public class PedidoRegistroDTO {
     private Long IdCliente;
     private List<DetallePedidoRegistroDTO> detalles;
 
+    public PedidoRegistroDTO(Long idCliente, List<DetallePedidoRegistroDTO> detalles) {
+        IdCliente = idCliente;
+        this.detalles = detalles;
+    }
+
 }

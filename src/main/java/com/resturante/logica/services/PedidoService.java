@@ -42,9 +42,7 @@ public class PedidoService {
     }
 
     public Pedido actualizarPedido(Long id, Pedido pedidoActualizado) {
-
         return repositorioPedido.findById(id).map(pedidoExistente -> {
-
             pedidoExistente.setEstado(pedidoActualizado.getEstado());
             pedidoExistente.setCliente(pedidoActualizado.getCliente());
             pedidoExistente.getDetalles().clear();

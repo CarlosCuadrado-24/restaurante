@@ -7,9 +7,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MenuRegistroDTO {
-
     private String nombre;
 
+    public MenuRegistroDTO(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public MenuRegistroDTO() {
+    }
 }
 
 

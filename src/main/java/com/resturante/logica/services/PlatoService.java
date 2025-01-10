@@ -41,6 +41,7 @@ public class PlatoService {
         }).orElseThrow(() -> new RuntimeException("Plato con el id " + id + " no pudo ser actualizado"));
     }
 
+
     public void eliminarPlato(Long id) {
         repositorioPlato.deleteById(id);
     }

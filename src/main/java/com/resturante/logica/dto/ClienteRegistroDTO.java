@@ -11,4 +11,14 @@ public class ClienteRegistroDTO {
     private String cedula;
     private String correo;
     private String telefono;
+
+    public ClienteRegistroDTO(String nombre, String cedula, String correo, String telefono) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
+
+    public ClienteRegistroDTO() {
+    }
 }

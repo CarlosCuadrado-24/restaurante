@@ -31,4 +31,17 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Pedido> pedidos;
 
+    public Cliente(Long id, String nombre, String cedula, String correo, String telefono, String tipo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.tipo = tipo;
+    }
+
+    public Cliente() {
+    }
+
+
 }

@@ -41,4 +41,17 @@ public class Pedido {
 
     private Double total = 0.0;
 
+    public Pedido() {
+    }
+
+    public Pedido(Long id, LocalDateTime fechaPedido, String estado, Cliente cliente, List<DetallePedido> detalles, Double total) {
+        this.id = id;
+        this.fechaPedido = fechaPedido;
+        this.estado = estado;
+        this.cliente = cliente;
+        this.detalles = detalles;
+        this.total = total;
+    }
+
+
 }

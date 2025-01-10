@@ -26,4 +26,17 @@ public class Menu {
     @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Plato> platos;
 
+    public Menu(Long id, String nombre, List<Plato> platos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.platos = platos;
+    }
+
+    public Menu(Long id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
+    public Menu() {
+    }
 }

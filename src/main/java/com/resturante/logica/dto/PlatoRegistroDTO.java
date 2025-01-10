@@ -10,4 +10,14 @@ public class PlatoRegistroDTO {
     private String descripcion;
     private Double precio;
     private Long IdMenu;
+
+    public PlatoRegistroDTO(String nombre, String descripcion, Double precio, Long idMenu) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        IdMenu = idMenu;
+    }
+
+    public PlatoRegistroDTO() {
+    }
 }

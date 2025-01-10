@@ -37,4 +37,15 @@ public class Plato {
     @OneToMany(mappedBy = "plato", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetallePedido> detalles = new ArrayList<>();
 
+    public Plato(Long id, String nombre, String descripcion, Double precio, String tipo, Menu menu) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.tipo = tipo;
+        this.menu = menu;
+    }
+
+    public Plato() {
+    }
 }

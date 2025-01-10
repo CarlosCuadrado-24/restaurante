@@ -1,6 +1,5 @@
 package com.resturante.logica.services;
 
-import com.resturante.logica.models.Cliente;
 import com.resturante.logica.models.Menu;
 import com.resturante.logica.repositories.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ public class MenuService {
         this.repositoriomenu = repositoriomenu;
     }
 
-
     public void agregarMenu(Menu menu){
         repositoriomenu.save(menu);
     }
@@ -31,17 +29,15 @@ public class MenuService {
         return repositoriomenu.findAll();
     }
 
-    public Menu actualizarMenu(Long id,Menu menuActualizado){
-        return repositoriomenu.findById(id).map(x->{
-            x.setNombre(menuActualizado.getNombre());
-            return repositoriomenu.save(x);
-        }).orElseThrow(()-> new RuntimeException("Menu con el id "+id+" no pudo ser actualizado"));
+    public Menu actualizarMenu(Long id, Menu menuActualizado) {
+        return repositoriomenu.findById(id).map(menu -> {
+            menu.setNombre(menuActualizado.getNombre());
+            return repositoriomenu.save(menu);
+        }).orElseThrow(() -> new RuntimeException("Menu con el id " + id + " no existe."));
     }
 
     public void eliminarMenu(Long id){
         repositoriomenu.deleteById(id);
     }
-
-
 
 }

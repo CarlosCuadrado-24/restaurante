@@ -55,13 +55,14 @@ public class MenuController {
     @PutMapping("/{id}")
     public ResponseEntity<MenuRespuestaDTO> actualizarMenu(@PathVariable Long id, @RequestBody MenuRegistroDTO menuRegistro) {
         try {
-            Menu menuActualizado = MenuConverter.aEntidad(id,menuRegistro);
-            menuService.actualizarMenu(id,menuActualizado);
-            return ResponseEntity.ok(MenuConverter.aRespuestaDTO(menuActualizado));
+            Menu menuActualizado = MenuConverter.aEntidad(id, menuRegistro);
+            Menu menuPersistido = menuService.actualizarMenu(id, menuActualizado);
+            return ResponseEntity.ok(MenuConverter.aRespuestaDTO(menuPersistido));
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminarMenu(@PathVariable Long id){
