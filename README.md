@@ -44,6 +44,22 @@ Documentados automáticamente con Swagger.
 🔗 Accede a la documentación en:  
 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
+
+## 🧼 Buenas prácticas aplicadas
+✔️ Separación clara entre capa de presentación, lógica de negocio y persistencia
+
+✔️ DTOs para evitar exponer directamente entidades
+
+✔️ Patrón DTO + Mapper para desacoplar datos y lógica
+
+✔️ Excepciones controladas y mensajes claros
+
+✔️ Código limpio y legible
+
+## ✍️ Autor
+Carlos Cuadrado
+💼 Proyecto académico
+
 ## 🗂️ Resumen de Estructura
 
 ```plaintext
@@ -66,17 +82,4 @@ com.resturante.logica
 ├── LogicaApplication
 └── documentacion
 
-## 🧼 Buenas prácticas aplicadas
-✔️ Separación clara entre capa de presentación, lógica de negocio y persistencia
 
-✔️ DTOs para evitar exponer directamente entidades
-
-✔️ Patrón DTO + Mapper para desacoplar datos y lógica
-
-✔️ Excepciones controladas y mensajes claros
-
-✔️ Código limpio y legible
-
-## ✍️ Autor
-Carlos Cuadrado
-💼 Proyecto académico
